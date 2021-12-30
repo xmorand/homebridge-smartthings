@@ -89,6 +89,7 @@ module.exports = class ST_Accessories {
             .setCharacteristic(Characteristic.Model, accessory.context.deviceData.modelName ? `${this.myUtils.toTitleCase(accessory.context.deviceData.modelName)}` : "Unknown")
             .setCharacteristic(Characteristic.Name, accessory.context.deviceData.name)
             .setCharacteristic(Characteristic.HardwareRevision, pluginVersion);
+            .setCharacteristic(Characteristic.SerialNumber, accessory.context.device.clientId);
         accessory.servicesToKeep.push(Service.AccessoryInformation.UUID);
 
         if (!accessoryInformation.listeners("identify")) {
